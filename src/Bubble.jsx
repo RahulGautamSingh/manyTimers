@@ -6,7 +6,7 @@ export default function Bubble(props) {
   let intervalId;
   useEffect(() => {
     console.log(time);
-    if (time === 0) {
+    if (time <= 0) {
       clearInterval(intervalId);
     } else {
         // eslint-disable-next-line
