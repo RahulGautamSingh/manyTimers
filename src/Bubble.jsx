@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./bubble.css";
 export default function Bubble(props) {
   let [time, setTime] = useState(props.time);
   console.log(time);
@@ -9,9 +9,21 @@ export default function Bubble(props) {
     if (time === 0) {
       clearInterval(intervalId);
     } else {
-      intervalId = setInterval(()=>setTime(time - 1), 1000);
+        // eslint-disable-next-line
+      intervalId = setInterval(() => setTime(time - 1), 1000);
       return () => clearInterval(intervalId);
     }
   }, [time]);
-  return <div>{time !== 0 && <p>{time}</p>}</div>;
+
+  return (
+    <div
+      className="circle bounce-effect"
+      style={{
+        display: time === 0 ? "none" : "flex",
+        opacity: time === 1 ? 0 : 1,
+      }}
+    >
+      <p>{time}</p>
+    </div>
+  );
 }
